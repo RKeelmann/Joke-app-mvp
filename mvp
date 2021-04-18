@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+    :root-text {
+  --margin-top: 0.5em;
+}
+.textTop {
+  --margin-bottom: 0.5em;
+}
+.textMiddle {
+  --margin-top: 0em;
+}
+.textLeft {
+  --margin-right: 0.5em;
+}
+.textRight {
+  --margin-left: 0.5em;
+}
+#screen-authentication {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+ 
+}
+#pildid img {
+  width: 100px;
+  height: 100px;
+} 
+#mailbox {
+  display: flex;
+  flex-flow: column nowrap;
+}
+#mailboxTitle {
+  align-self: center;
+  font-size: 2em;
+}
+#customize {
+  display: flex;
+  flew-direction: row;
+  // box-shadow: inset 0 0 40px green;
+}
+#newPic {
+  border: 3px solid black;
+  } 
+  
+#screen-authentication button {
+  width: 25%;
+  margin: 1em;
+ 
+}
+#screen-authentication input {
+  width: 25%;
+  margin: 0.5em;
+}
+
+#screen-authentication p {
+  display: flex;
+  font-weight: bold;
+  
+}
+
+h1 {
+  font-size: 200%;
+}
+
+#navbar {
+  overflow: hidden;
+  width: 100%;
+  background-color: #8a828c;
+}
+#navbar h1 {
+  text-align: center;
+}
+#navbar p {
+  float: left;
+}
+#mainScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#box {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#creatingScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+#creatingScreen #pildid img {
+  transform: scale(0.8, 0.8);
+  margin: 0.7em;
+}
+
+}
+#pildid {
+  display: flex;
+  flex-direction: row;
+}
+
+#galleryText {
+  margin: 0.5em;
+}
+#inputText {
+  margin-top: 0.5em;
+}
+#creatingScreen input {
+  margin: 0.5em;
+}
+#insertedText {
+  position: relative;
+  bottom: 55px;
+  right: 0;
+}
+
+#pilt {
+  
+  position: relative;
+  text-align: center;
+  margin-top: 1em;
+  width: 100px;
+  height: 100px;
+}
+#pilt img {
+  width: 100%;
+  height: 100%;
+
+}
+#box img {
+  width: 100px;
+  height: 100px;
+}
+#insertedText {
+  font-size: 0.8em;
+  width: 100%;
+}
+#pilt img {
+  width: 100px;
+  height: 100px;
+}
+#positions {
+  display: flex;
+  flex-flow: row nowrap;
+}
+#positsioonid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1em;
+}
+#positsioonid button {
+  font-size: 0.5em;
+  margin: 0.2em;
+}
+    </style>
+  </head>
+  <body>
+    <div id="screen-authentication">
+      <h1> Jokemaniacs </h1>
+      <p>Email</p>
+      <input id="email"></input>
+      <p>Password</p>
+      <input id="password" type="password"></input>
+      <p></p>
+      <button onclick="Signup();"> Sign up </button> <button onclick="Login();"> Log in </button>
+      <button onclick="toggleTheme();">Theme</button>
+      <p id="feedback"></p>
+    </div>
+    <div id="mainScreen">
+      <div id="navbar">
+        <p onclick=showAuthentication();> Back </p>
+        <h1> Jokemaniacs </h1>
+      </div>
+      <div id="box">
+        <img src="https://cdn.discordapp.com/attachments/467394585820397578/832550427513192448/ldz4i6wdl7r21.png"; onclick="showCreatingScreen()";>
+        <p onclick="showCreatingScreen()">Create memes</p>
+      </div>
+      <div id="box">
+        <img src="https://cdn.discordapp.com/attachments/467394585820397578/832551043405447178/unknown.png"; onclick="showMailbox()";>
+        <p onclick="showMailbox()">Check received ones</p>
+      </div>
+    </div>
+    <div id="creatingScreen">
+      <div id="navbar">
+        <p onclick=showMainScreen();> Back </p>
+        <h1> Jokemaniacs </h1>
+      </div>
+      <p id="galleryText"> Choose a picture from a gallery </p>
+      <div id="pildid">
+        <img src="https://cdn.discordapp.com/attachments/316277949441769482/832661848775065600/unknown.png"; id="Pic1"; onclick="changePic(this);"/>
+        <img src="https://cdn.discordapp.com/attachments/316277949441769482/832661251817472036/unknown.png"; id="Pic2"; onclick="changePic(this);"/>
+        <img src="https://cdn.discordapp.com/attachments/316277949441769482/832663553629749338/unknown.png";  id="Pic3"; onclick="changePic(this);"/>
+        <img src="https://cdn.discordapp.com/attachments/316277949441769482/832664339142934608/unknown.png"; id="Pic4"; onclick="changePic(this);"/>
+      </div>
+      <p id="inputText"> Add your text below </p>
+      <input type="text"; id="sometext";></input>
+      <input type="submit"; onclick="addtext()"> </input>
+      <div id="customize"> 
+        <div id="pilt">
+          <img id= "newPic";src="https://cdn.discordapp.com/attachments/467394585820397578/832558478719057940/9k.png">
+          <p id="insertedText"><addedText></p>
+        </div>
+        <div id="positions">
+          <div id="positsioonid">
+            <button onclick="textAlign('top')"> Top </button>
+            <button onclick="textAlign('left')"> Left </button>
+            <button onclick="textAlign('right')"> Right </button>
+            <button onclick="textAlign('bottom')"> Bottom </button>
+            <button onclick="textAlign('middle')"> Middle </button>
+          </div>        
+        </div>
+        
+       </div>
+       <button id="send": onclick="send()";> Send </button> 
+    </div>
+
+    <div id="mailbox">
+      <div id="navbar">
+        <p onclick=showMainScreen();> Back </p>
+        <h1> Jokemaniacs </h1>
+        
+      </div> 
+      <p id="mailboxTitle"> Mailbox :O </p>
+
+      <div id=">
+      
+      </div>
+
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first 
+    Base64 aXRzIG1lIHlhIGJvaSBMYXNzZSDwn5Gz4pyI8J+SpfCfj6Lwn4+i8J+UpQ== -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+    <script src="script.js"></script>
+    <script> 
+    / Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+var firebaseConfig = {
+  apiKey: "AIzaSyB4wsvSPlhhkH5PolXpaeZGvzQsGG6LnH0",
+  authDomain: "chat-app-c84ae.firebaseapp.com",
+  projectId: "chat-app-c84ae",
+  storageBucket: "chat-app-c84ae.appspot.com",
+  messagingSenderId: "986014032375",
+  appId: "1:986014032375:web:70b3e12efcc346d6ff0ef2",
+  measurementId: "G-YYTTTYNHZD"
+  };
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var database = firebase.firestore();
+
+var authenticationHTML = document.getElementById("screen-authentication"); 
+var mainScreenHTML = document.getElementById("mainScreen");
+var creatingScreenHTML = document.getElementById("creatingScreen");
+var mailboxHTML = document.getElementById("mailbox");
+showAuthentication();
+var memePic = document.getElementById("newPic");
+
+function Signup() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  console.log("Signup with " + email + " " + password);
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("We are good to go, account created! " + userCredential.user.email);
+      showMainScreen();
+    })
+    .catch((error) => {
+      feedbackHTML.innerHTML = error.message;
+    });
+    
+}
+function Login() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("User logged in! " + userCredential.user.email);
+      showMainScreen();
+    })
+    .catch((error) => {      
+      console.log("Error! " + error.message);      
+      feedbackHTML.innerHTML = error.message;
+    });
+}
+function showAuthentication() { 
+  authenticationHTML.style.display = "flex";
+  mainScreenHTML.style.display = "none";
+  creatingScreenHTML.style.display = "none";
+  mailboxHTML.style.display = "none";
+
+}
+
+function showMainScreen() {
+  authenticationHTML.style.display = "none";
+  mainScreenHTML.style.display = "flex";
+  creatingScreenHTML.style.display = "none";
+  mailboxHTML.style.display = "none";
+   
+}
+
+function showCreatingScreen() {
+  authenticationHTML.style.display = "none";
+  mainScreenHTML.style.display = "none";
+  creatingScreenHTML.style.display = "flex";
+  mailboxHTML.style.display = "none";
+}
+
+function showMailbox() {
+  authenticationHTML.style.display = "none";
+  mainScreenHTML.style.display = "none";
+  creatingScreenHTML.style.display = "none";
+  mailboxHTML.style.display = "flex";
+}
+function addtext () {
+  var addedText = document.getElementById("sometext").value;
+  document.getElementById("insertedText").innerHTML = addedText;
+}
+
+
+function changePic(clickedElement) {
+  var v1 = clickedElement.getAttribute("src");
+  memePic.setAttribute("src", v1);
+  console.log("pressed")
+}
+
+
+function textAlign(alignment) {
+tex = document.getElementById("insertedText")
+if (alignment == "top") {tex.style.bottom = "100px";tex.style.right = "0px";}
+if (alignment == "left") {tex.style.bottom = "55px";tex.style.right = "40px";}
+if (alignment == "right") {tex.style.bottom = "55px";tex.style.right = "-40px";}
+if (alignment == "bottom") {tex.style.bottom = "20px";tex.style.right = "0px";}
+if (alignment == "middle") {tex.style.bottom = "55px";tex.style.right = "0px";}
+}
+</script>
+    
+  </body>
+</html>
